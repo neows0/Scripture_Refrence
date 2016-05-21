@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Second extends AppCompatActivity {
 
@@ -26,6 +27,15 @@ public class Second extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        Bundle first = getIntent().getExtras();
+        if(first == null) {
+            Intent action = new Intent(Second.this,First.class);
+            startActivity (action);
+        }
+        String book = first.getString("BOOK_NAME");
+        TextView refrence = (TextView) findViewById(R.id.refrence);
+        refrence.setText(book);
+
         init();
     }
 }
